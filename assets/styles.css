@@ -29,7 +29,7 @@ body {
   width: 100%;
   padding: 15px;
 }
-.toggler {
+.nav {
   display: flex;
   background-color: #edeef1;
   overflow: hidden;
@@ -37,10 +37,16 @@ body {
   border-radius: 70px;
   flex-direction: row;
   justify-content: center;
-  padding: 5px;
+  position: relative;
+  padding: 5px 10px 5px;
 }
-.toggle-button {
+
+.slide-button {
   border-radius: 70px;
+  background-color: none;
+  display: block;
+  position: relative;
+  color: black;
   width: 50%;
   border: none;
   outline: none;
@@ -49,16 +55,39 @@ body {
   text-align: center;
   cursor: pointer;
   transition: 0.5s;
+  z-index: 1;
 }
-.toggle-button:hover {
+.slider {
+  border-radius: 70px;
+  position: absolute;
+  background-color: hsl(240, 62%, 36%);
+  color: hsl(240, 62%, 36%);
+  width: 50%;
+  border: none;
+  outline: none;
+  padding: 12px;
+  opacity: 0.7;
+  text-align: center;
+  cursor: pointer;
+  left: 5px;
+  transition: 0.4s ease-in-out;
+  opacity: 1;
+}
+.slide-button:hover {
   opacity: 1;
   background-color: inherit;
 }
-.toggle-button.active {
-  background-color: hsl(249, 60%, 32%);
+.slide-button.active {
+  /* background-color: hsl(249, 60%, 32%); */
   color: white;
   opacity: 1;
   font-weight: 900;
+}
+.yearly-selected {
+  left: calc(50% - 5px);
+}
+.sem-selected {
+  left: 5px;
 }
 .cards {
   display: flex;
@@ -130,7 +159,7 @@ body {
   outline: 0;
   padding: 12px;
   color: white;
-  background-color: hsl(249, 60%, 32%);
+  background-color: hsl(240, 62%, 36%);
   text-align: center;
   cursor: pointer;
   width: 80%;
@@ -150,13 +179,17 @@ body {
 .features p {
   margin-bottom: 12px;
 }
-.features-list {
-  font-size: 16px;
-  list-style: circle;
-  list-style-position: outside;
-  text-align: left;
+
+.features ul li {
+  list-style: url("./photos/tick.png");
+  margin-bottom: 20px;
+  font-size: 15px;
+  color: #636060;
+  padding-inline-start: 15px;
+  transform: translate(-5%);
 }
-.card li {
+/* .card li {
   font-size: 14px;
   margin-bottom: 12px;
-}
+  list-style: url("tick.png");
+} */

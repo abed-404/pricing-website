@@ -73,7 +73,7 @@ const renderCard = (
   createButton("trialBtn", "Start trial", null, traial);
   const featuresDiv = createDivElement("features", card);
   createParagraphElement("list-header", "this includes", featuresDiv);
-  createList("features-list", features, card);
+  createList(features, card);
 };
 const renderCards = (cards, duration) => {
   if (duration === "semester") {
@@ -84,10 +84,18 @@ const renderCards = (cards, duration) => {
 
 renderCards(cards, "semester");
 const resetDiv = (e) => {
+  const slider = document.getElementById("slider");
+  slider.className = slider.className.replace(" yearly-selected", "");
+  slider.className = slider.className.replace(" sem-selected", "");
   cardsDiv.innerHTML = "";
-  const togglers = document.getElementsByClassName("toggle-button");
-  for (i = 0; i < togglers.length; i++) {
-    togglers[i].className = togglers[i].className.replace(" active", "");
+  const sliders = document.getElementsByClassName("slide-button");
+  for (i = 0; i < sliders.length; i++) {
+    sliders[i].className = sliders[i].className.replace(" active", "");
+  }
+  if (e.target.id === "sem") {
+    slider.className += " sem-selected";
+  } else {
+    slider.className += " yearly-selected";
   }
   e.target.className += " active";
 };
@@ -101,3 +109,13 @@ yearlyBtn.addEventListener("click", (e) => {
   resetDiv(e);
   renderCards(cards, "year");
 });
+// semBtn.addEventListener("click", (e) => {
+//   e.preventDefault();
+//   resetDiv(e);
+//   renderCards(cards, "semester");
+// });
+// yearlyBtn.addEventListener("click", (e) => {
+//   e.preventDefault();
+//   resetDiv(e);
+//   renderCards(cards, "year");
+// });
