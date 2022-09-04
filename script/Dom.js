@@ -43,9 +43,9 @@ const createListELement = (textContent, parent) => {
   li.innerText = textContent;
   parent.appendChild(li);
 };
-const createList = (className, listELements, parent) => {
+const createList = (listELements, parent) => {
   const ul = document.createElement("ul");
-  ul.className = className;
+  // ul.className = className;
   listELements.map((elem) => {
     createListELement(elem, ul);
   });
